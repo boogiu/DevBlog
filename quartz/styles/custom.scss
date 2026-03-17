@@ -1,17 +1,44 @@
 @use "./base.scss";
 
-// put your custom CSS here!
 @import url("https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/variable/woff2/SUIT-Variable.css");
 
-body,
-button,
-input,
-textarea,
-select,
-p,
-li,
-blockquote,
-table,
+:root {
+  --page-width: 900px;
+  --radius-soft: 14px;
+  --radius-card: 18px;
+  --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.06);
+  --shadow-soft-dark: 0 12px 32px rgba(0, 0, 0, 0.22);
+}
+
+/* 전체 폰트 */
+html,
+body {
+  font-family: "SUIT Variable", "SUIT", "Noto Sans KR", sans-serif;
+  text-rendering: optimizeLegibility;
+  word-break: keep-all;
+  line-break: auto;
+}
+
+/* 코드 폰트는 유지 */
+code,
+pre,
+kbd,
+samp {
+  font-family: "JetBrains Mono", "IBM Plex Mono", monospace;
+}
+
+/* 본문 영역 전체 톤 */
+body {
+  line-height: 1.75;
+  letter-spacing: -0.01em;
+}
+
+/* 메인 컨텐츠 폭 */
+.page article {
+  max-width: var(--page-width);
+}
+
+/* 제목 계열 */
 h1,
 h2,
 h3,
@@ -19,16 +46,278 @@ h4,
 h5,
 h6,
 .page-title,
-.article-title,
+.article-title {
+  font-family: "SUIT Variable", "SUIT", "Noto Sans KR", sans-serif;
+  letter-spacing: -0.03em;
+  line-height: 1.25;
+  font-weight: 760;
+}
+
+h1,
+.article-title {
+  font-size: clamp(2rem, 4vw, 2.7rem);
+  margin-bottom: 0.8rem;
+}
+
+h2 {
+  font-size: clamp(1.45rem, 2vw, 1.8rem);
+  margin-top: 2.4rem;
+  margin-bottom: 0.9rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--lightgray);
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin-top: 2rem;
+  margin-bottom: 0.7rem;
+}
+
+/* 메타 정보 */
+.content-meta,
+.byline,
+.date,
+.time-to-read {
+  font-size: 0.92rem;
+  color: var(--gray);
+  letter-spacing: -0.01em;
+}
+
+/* 문단/리스트 */
+p,
+ul,
+ol,
+li,
+blockquote {
+  font-size: 1.02rem;
+}
+
+p,
+ul,
+ol,
+pre,
+blockquote,
+table,
+.callout {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+ul,
+ol {
+  padding-left: 1.4rem;
+}
+
+li + li {
+  margin-top: 0.3rem;
+}
+
+/* 링크 */
+a {
+  color: var(--secondary);
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 0.08em;
+  transition:
+    color 0.18s ease,
+    background-color 0.18s ease,
+    border-color 0.18s ease;
+}
+
+a:hover {
+  color: var(--tertiary);
+}
+
+a.internal {
+  background: linear-gradient(transparent 72%, var(--highlight) 72%);
+  padding: 0 0.08rem;
+  border-radius: 0.2rem;
+}
+
+/* 선택 영역 */
+::selection {
+  background: var(--highlight);
+}
+
+/* 인용문 */
+blockquote {
+  margin-left: 0;
+  padding: 0.9rem 1rem;
+  border-left: 4px solid var(--secondary);
+  background: color-mix(in srgb, var(--highlight) 65%, transparent);
+  border-radius: 0 12px 12px 0;
+  color: var(--darkgray);
+}
+
+/* 콜아웃 */
+.callout {
+  border: 1px solid color-mix(in srgb, var(--lightgray) 70%, var(--secondary) 30%);
+  border-radius: var(--radius-card);
+  padding: 0.2rem 0.35rem;
+  box-shadow: var(--shadow-soft);
+}
+
+.callout .callout-title {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.callout .callout-content {
+  font-size: 0.98rem;
+}
+
+/* 인라인 코드 */
+code:not(pre code) {
+  background: color-mix(in srgb, var(--highlight) 75%, transparent);
+  border: 1px solid var(--lightgray);
+  border-radius: 8px;
+  padding: 0.14rem 0.4rem;
+  font-size: 0.92em;
+}
+
+/* 코드 블록 */
+pre {
+  border: 1px solid var(--lightgray);
+  border-radius: var(--radius-card);
+  padding: 1rem 1.05rem;
+  overflow-x: auto;
+  box-shadow: var(--shadow-soft);
+}
+
+pre code {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+/* 표 */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border: 1px solid var(--lightgray);
+  border-radius: var(--radius-card);
+}
+
+th,
+td {
+  padding: 0.8rem 0.9rem;
+  border-bottom: 1px solid var(--lightgray);
+  text-align: left;
+}
+
+th {
+  background: color-mix(in srgb, var(--highlight) 70%, transparent);
+  font-weight: 700;
+}
+
+tr:last-child td {
+  border-bottom: 0;
+}
+
+/* 이미지 */
+img {
+  border-radius: 16px;
+}
+
+/* 수평선 */
+hr {
+  border: 0;
+  border-top: 1px solid var(--lightgray);
+  margin: 2rem 0;
+}
+
+/* 사이드바 / 탐색기 / 검색 패널 톤 */
 .sidebar,
 .explorer,
 .search {
   font-family: "SUIT Variable", "SUIT", "Noto Sans KR", sans-serif;
 }
 
-code,
-pre,
-kbd,
-samp {
-  font-family: "JetBrains Mono", monospace;
+.explorer,
+.search > div,
+.popover,
+.sidebar .search {
+  border-radius: var(--radius-card);
+}
+
+/* 페이지 제목 */
+.page-title {
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.page-title a {
+  color: var(--dark);
+  text-decoration: none;
+}
+
+.page-title a:hover {
+  color: var(--secondary);
+}
+
+/* 최근 글/카드류 느낌 */
+.recent-notes,
+.popover,
+.explorer-content {
+  border-radius: var(--radius-card);
+}
+
+/* 태그 */
+a.tag-link,
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--highlight) 80%, transparent);
+  border: 1px solid var(--lightgray);
+  text-decoration: none;
+  font-size: 0.88rem;
+}
+
+/* 다크 모드 보정 */
+[saved-theme="dark"] .callout,
+.darkmode .callout {
+  box-shadow: var(--shadow-soft-dark);
+}
+
+[saved-theme="dark"] pre,
+.darkmode pre {
+  box-shadow: var(--shadow-soft-dark);
+}
+
+[saved-theme="dark"] blockquote,
+.darkmode blockquote {
+  color: var(--darkgray);
+}
+
+/* 모바일 보정 */
+@media (max-width: 800px) {
+  body {
+    line-height: 1.7;
+  }
+
+  h1,
+  .article-title {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.35rem;
+  }
+
+  p,
+  ul,
+  ol,
+  li,
+  blockquote {
+    font-size: 0.98rem;
+  }
+
+  pre {
+    padding: 0.9rem;
+  }
 }
