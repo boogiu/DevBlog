@@ -2,8 +2,8 @@
 
 :root {
   --page-width: 900px;
-  --radius-soft: 14px;
-  --radius-card: 18px;
+  --radius-soft: 4px;
+  --radius-card: 4px;
   --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.06);
   --shadow-soft-dark: 0 12px 32px rgba(0, 0, 0, 0.22);
 }
@@ -126,7 +126,6 @@ a:hover {
 a.internal {
   background: linear-gradient(transparent 72%, var(--highlight) 72%);
   padding: 0 0.08rem;
-  border-radius: 0.2rem;
 }
 
 /* 선택 영역 */
@@ -165,7 +164,7 @@ blockquote {
 code:not(pre code) {
   background: color-mix(in srgb, var(--highlight) 75%, transparent);
   border: 1px solid var(--lightgray);
-  border-radius: 8px;
+  border-radius: 2px;
   padding: 0.14rem 0.4rem;
   font-size: 0.92em;
 }
