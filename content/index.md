@@ -15,29 +15,37 @@ description: 프로젝트 기록, 공부 정리, 트러블슈팅 아카이브
 ---
 
 ## 빠른 이동
+---
+title: 부기의 개발 노트
+description: 프로젝트와 공부 기록을 모아둔 메인 페이지
+---
+
+# 부기의 개발 노트
+
+안녕하세요.  
+프로젝트 기록, 공부 정리, 트러블슈팅을 모아두는 공간입니다.
 
 <div class="card-grid">
   <a class="home-card internal" href="./프로젝트">
     <h3>Projects</h3>
-    <p>프로젝트 구현 기록</p>
+    <p>진행한 프로젝트, 구현 기능, 구조 설계 기록</p>
   </a>
 
   <a class="home-card internal" href="./공부">
     <h3>Study</h3>
-    <p>기술 공부와 개념 정리</p>
+    <p>렌더링, 엔진 구조, CS, 게임 프로그래밍 정리</p>
   </a>
 
   <a class="home-card internal" href="./트러블슈팅">
     <h3>Troubleshooting</h3>
-    <p>문제 해결 기록</p>
+    <p>오류 원인 분석, 해결 과정, 디버깅 기록</p>
   </a>
 
   <a class="home-card internal" href="./개발-로그">
     <h3>Dev Log</h3>
-    <p>작업 흐름과 변경 사항</p>
+    <p>작업 흐름, 실험, 변경 사항을 가볍게 기록</p>
   </a>
 </div>
-
 ---
 
 ## 소개
