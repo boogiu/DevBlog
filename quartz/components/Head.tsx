@@ -52,7 +52,7 @@ export default (() => {
             <link rel="preconnect" href="https://cdn.jsdelivr.net" />
             <link
               rel="stylesheet"
-              href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/variable/woff2/SUIT-Variable.css"
+              href="https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Thin.woff2"
             />
           </>
         )}
