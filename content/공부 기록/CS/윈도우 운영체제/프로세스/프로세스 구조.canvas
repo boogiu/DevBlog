@@ -19,7 +19,7 @@
 		{"id":"9e715e1555552b28","type":"text","text":"커널 오브젝트","x":360,"y":772,"width":250,"height":148},
 		{"id":"0d5a7c19974520c4","type":"text","text":"프로세스 관리 구조체\nstruct PCObject{\n\t...\n\t...\n}","x":360,"y":440,"width":250,"height":148},
 		{"id":"9b695ad0dd27f249","type":"text","text":"프로세스 관리 구조체 변수","x":360,"y":648,"width":250,"height":60,"color":"3"},
-		{"id":"0ee96a939141f00c","type":"file","file":"CS/윈도우 운영체제/커널 오브젝트.md","x":-68,"y":450,"width":400,"height":198}
+		{"id":"0ee96a939141f00c","type":"file","file":"공부 기록/CS/윈도우 운영체제/커널 오브젝트.md","x":-68,"y":450,"width":400,"height":198}
 	],
 	"edges":[
 		{"id":"de1909a55c1926ee","fromNode":"ee0dbf8509e82f29","fromSide":"right","toNode":"bd61f5f5f4e59012","toSide":"left"},

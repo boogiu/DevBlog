@@ -1,12 +1,6 @@
 ---
-title: 부기의 개발 노트
-description: C++, DirectX11, 렌더링, 엔진 구조, 트러블슈팅 기록
----
----
-
-title: 부기의 개발 노트
+title: 정부기 dev blog
 description: 프로젝트 기록, 공부 정리, 트러블슈팅 아카이브
-
 ---
 
 # 정부기 dev blog
@@ -22,12 +16,27 @@ description: 프로젝트 기록, 공부 정리, 트러블슈팅 아카이브
 
 ## 빠른 이동
 
-- [[프로젝트]]
-- [[공부]]
-- [[트러블슈팅]]
-- [[개발 로그]]
-- [[렌더링]]
-- [[엔진 구조]]
+<div class="card-grid">
+  <a class="home-card internal" href="./프로젝트">
+    <h3>Projects</h3>
+    <p>프로젝트 구현 기록</p>
+  </a>
+
+  <a class="home-card internal" href="./공부">
+    <h3>Study</h3>
+    <p>기술 공부와 개념 정리</p>
+  </a>
+
+  <a class="home-card internal" href="./트러블슈팅">
+    <h3>Troubleshooting</h3>
+    <p>문제 해결 기록</p>
+  </a>
+
+  <a class="home-card internal" href="./개발-로그">
+    <h3>Dev Log</h3>
+    <p>작업 흐름과 변경 사항</p>
+  </a>
+</div>
 
 ---
 
@@ -123,17 +132,6 @@ description: 프로젝트 기록, 공부 정리, 트러블슈팅 아카이브
 - [[개발 로그/엔진 리팩토링]]
 - [[개발 로그/성능 최적화]]
 
----
-
-## Featured Notes
-
-| 구분 | 문서 |
-|---|---|
-| 프로젝트 | [[프로젝트/메인 프로젝트]] |
-| 렌더링 | [[공부/렌더링 파이프라인]] |
-| 최적화 | [[프로젝트/오클루전 컬링]] |
-| 문제 해결 | [[트러블슈팅/비디오 디코딩]] |
-| 구조 설계 | [[공부/컴포넌트 구조]] |
 
 ---
 
