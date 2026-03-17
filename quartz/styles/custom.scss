@@ -255,12 +255,15 @@ hr {
 }
 
 /* 최근 글/카드류 느낌 */
+
 .recent-notes,
-.popover,
-.explorer-content {
+.popover {
   border-radius: var(--radius-card);
 }
 
+.explorer-content {
+  border-radius: 0;
+}
 /* 태그 */
 a.tag-link,
 .tag {
