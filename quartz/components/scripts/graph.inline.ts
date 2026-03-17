@@ -68,6 +68,48 @@ type TweenNode = {
   stop: () => void
 }
 
+document.addEventListener("nav", () => {
+  const graphRoots = document.querySelectorAll(".graph")
+
+  graphRoots.forEach((graphRoot) => {
+    const modeButtons = Array.from(
+      graphRoot.querySelectorAll<HTMLElement>("[data-graph-mode-button]"),
+    )
+    const modePanels = Array.from(
+      graphRoot.querySelectorAll<HTMLElement>("[data-graph-mode-panel]"),
+    )
+
+    const setGraphMode = (mode: string) => {
+      modeButtons.forEach((modeButton) => {
+        const isActive = modeButton.dataset.graphModeButton === mode
+        modeButton.dataset.active = isActive ? "true" : "false"
+        modeButton.setAttribute("aria-selected", isActive ? "true" : "false")
+      })
+
+      modePanels.forEach((modePanel) => {
+        const isActive = modePanel.dataset.graphModePanel === mode
+        modePanel.dataset.active = isActive ? "true" : "false"
+
+        if (isActive) {
+          modePanel.removeAttribute("hidden")
+        } else {
+          modePanel.setAttribute("hidden", "")
+        }
+      })
+    }
+
+    modeButtons.forEach((modeButton) => {
+      modeButton.addEventListener("click", () => {
+        const mode = modeButton.dataset.graphModeButton
+        if (!mode) return
+        setGraphMode(mode)
+      })
+    })
+
+    setGraphMode("global")
+  })
+})
+
 async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
   const slug = simplifySlug(fullSlug)
   const visited = getVisited()
