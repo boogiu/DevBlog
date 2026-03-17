@@ -236,7 +236,7 @@ hr {
 .search > div,
 .popover,
 .sidebar .search {
-  border-radius: 0;
+  border-radius: var(--radius-card);
 }
 
 /* 페이지 제목 */
@@ -264,61 +264,6 @@ hr {
 .explorer-content {
   border-radius: 0;
 }
-.graph-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  margin-bottom: 0.75rem;
-}
-
-.graph-mode-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.25rem;
-  border: 1px solid var(--lightgray);
-  border-radius: 999px;
-  background: var(--light);
-}
-
-.graph-mode-button {
-  border: 0;
-  background: transparent;
-  color: var(--darkgray);
-  padding: 0.45rem 0.8rem;
-  border-radius: 999px;
-  cursor: pointer;
-  font: inherit;
-  transition:
-    background-color 0.2s ease,
-    color 0.2s ease,
-    opacity 0.2s ease;
-}
-
-.graph-mode-button[data-active="true"] {
-  background: var(--secondary);
-  color: var(--light);
-}
-
-.graph-mode-button[data-active="false"] {
-  opacity: 0.8;
-}
-
-.graph-panels {
-  position: relative;
-}
-
-.graph-panel[hidden] {
-  display: none !important;
-}
-
-.graph-container,
-.global-graph-container {
-  width: 100%;
-  min-height: 420px;
-}
-
 /* 태그 */
 a.tag-link,
 .tag {
