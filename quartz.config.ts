@@ -8,51 +8,47 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "Quartz 4",
-    pageTitleSuffix: "",
-    enableSPA: true,
-    enablePopovers: true,
-    analytics: {
-      provider: "plausible",
+  pageTitle: "부기의 개발 노트",
+  pageTitleSuffix: " | Devlog",
+  enableSPA: true,
+  enablePopovers: true,
+  analytics: null,
+  locale: "ko-KR",
+  baseUrl: "사용자이름.github.io/레포이름",
+
+  theme: {
+    cdnCaching: true,
+    typography: {
+      header: "Noto Sans KR",
+      body: "Noto Sans KR",
+      code: "JetBrains Mono",
     },
-    locale: "en-US",
-    baseUrl: "quartz.jzhao.xyz",
-    ignorePatterns: ["private", "templates", ".obsidian"],
-    defaultDateType: "modified",
-    theme: {
-      fontOrigin: "googleFonts",
-      cdnCaching: true,
-      typography: {
-        header: "Schibsted Grotesk",
-        body: "Source Sans Pro",
-        code: "IBM Plex Mono",
+    colors: {
+      lightMode: {
+        light: "#fcfcfd",
+        lightgray: "#e9edf3",
+        gray: "#a7b0bd",
+        darkgray: "#4b5563",
+        dark: "#111827",
+        secondary: "#2563eb",
+        tertiary: "#7c3aed",
+        highlight: "rgba(37, 99, 235, 0.10)",
+        textHighlight: "#fff23688",
       },
-      colors: {
-        lightMode: {
-          light: "#faf8f8",
-          lightgray: "#e5e5e5",
-          gray: "#b8b8b8",
-          darkgray: "#4e4e4e",
-          dark: "#2b2b2b",
-          secondary: "#284b63",
-          tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
-          textHighlight: "#fff23688",
-        },
-        darkMode: {
-          light: "#161618",
-          lightgray: "#393639",
-          gray: "#646464",
-          darkgray: "#d4d4d4",
-          dark: "#ebebec",
-          secondary: "#7b97aa",
-          tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
-          textHighlight: "#b3aa0288",
-        },
+      darkMode: {
+        light: "#111827",
+        lightgray: "#243041",
+        gray: "#64748b",
+        darkgray: "#d1d5db",
+        dark: "#f9fafb",
+        secondary: "#60a5fa",
+        tertiary: "#a78bfa",
+        highlight: "rgba(96, 165, 250, 0.15)",
+        textHighlight: "#b3aa0288",
       },
     },
   },
+ },
   plugins: {
     transformers: [
       Plugin.FrontMatter(),
