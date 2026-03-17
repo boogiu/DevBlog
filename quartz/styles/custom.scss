@@ -1,3 +1,34 @@
 @use "./base.scss";
 
 // put your custom CSS here!
+@import url("https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/variable/woff2/SUIT-Variable.css");
+
+body,
+button,
+input,
+textarea,
+select,
+p,
+li,
+blockquote,
+table,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.page-title,
+.article-title,
+.sidebar,
+.explorer,
+.search {
+  font-family: "SUIT Variable", "SUIT", "Noto Sans KR", sans-serif;
+}
+
+code,
+pre,
+kbd,
+samp {
+  font-family: "JetBrains Mono", monospace;
+}

@@ -8,17 +8,15 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "Quartz 4",
-    pageTitleSuffix: "",
-    enableSPA: true,
-    enablePopovers: true,
-    analytics: {
-      provider: "plausible",
-    },
-    locale: "en-US",
-    baseUrl: "quartz.jzhao.xyz",
-    ignorePatterns: ["private", "templates", ".obsidian"],
-    defaultDateType: "modified",
+  pageTitle: "부기의 개발 노트",
+  pageTitleSuffix: " | Devlog",
+  enableSPA: true,
+  enablePopovers: true,
+  analytics: null,
+  locale: "ko-KR",
+  baseUrl: "boogiublog.pages.dev",
+  ignorePatterns: ["private", "templates", ".obsidian"],
+  defaultDateType: "modified",
     theme: {
       fontOrigin: "googleFonts",
       cdnCaching: true,
