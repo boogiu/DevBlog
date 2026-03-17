@@ -3,8 +3,6 @@ title: 정부기 dev blog
 description: 프로젝트 기록, 공부 정리, 트러블슈팅 아카이브
 ---
 
-# 정부기 dev blog
-
 안녕하세요.  
 이곳은 **프로젝트 기록**, **기술 공부 정리**, **트러블슈팅**을 모아두는 개발 노트입니다.
 
@@ -15,28 +13,31 @@ description: 프로젝트 기록, 공부 정리, 트러블슈팅 아카이브
 ---
 
 ## 빠른 이동
----
 
 <div class="card-grid">
-  <a class="home-card internal" href="./프로젝트">
-    <h3>Projects</h3>
-    <p>진행한 프로젝트, 구현 기능, 구조 설계 기록</p>
-  </a>
+  <a class="home-card" href="/프로젝트/">
+    <span class="home-card-title">Projects</span>
+    <span class="home-card-desc">진행한 프로젝트, 구현 기능, 구조 설계 기록</span>
+      <span class="home-card-badge">바로가기</span>
+</a>
 
-  <a class="home-card internal" href="./공부">
-    <h3>Study</h3>
-    <p>렌더링, 엔진 구조, CS, 게임 프로그래밍 정리</p>
-  </a>
+  <a class="home-card" href="/공부/">
+    <span class="home-card-title">Study</span>
+    <span class="home-card-desc">렌더링, 엔진 구조, CS, 게임 프로그래밍 정리</span>
+      <span class="home-card-badge">바로가기</span>
+</a>
 
-  <a class="home-card internal" href="./트러블슈팅">
-    <h3>Troubleshooting</h3>
-    <p>오류 원인 분석, 해결 과정, 디버깅 기록</p>
-  </a>
+  <a class="home-card" href="/트러블슈팅/">
+    <span class="home-card-title">Troubleshooting</span>
+    <span class="home-card-desc">오류 원인 분석, 해결 과정, 디버깅 기록</span>
+     <span class="home-card-badge">바로가기</span>
+ </a>
 
-  <a class="home-card internal" href="./개발-로그">
-    <h3>Dev Log</h3>
-    <p>작업 흐름, 실험, 변경 사항을 가볍게 기록</p>
-  </a>
+  <a class="home-card" href="/개발-로그/">
+    <span class="home-card-title">Dev Log</span>
+    <span class="home-card-desc">작업 흐름, 실험, 변경 사항을 가볍게 기록</span>
+      <span class="home-card-badge">바로가기</span>
+</a>
 </div>
 
 ---
@@ -57,6 +58,21 @@ description: 프로젝트 기록, 공부 정리, 트러블슈팅 아카이브
 
 > [!abstract] 진행한 프로젝트와 구현 기록
 > 직접 만들거나 다듬은 시스템, 기능, 구조를 정리한 문서들입니다.
+<div class="card-grid">
+  <a class="home-card" href="/프로젝트/">
+    <span class="home-card-title">Zenless_Zone_Zero</span>
+</a>
+
+    <a class="home-card" href="/프로젝트/">
+    <span class="home-card-title">Zenless_Zone_Zero</span>
+</a>
+  <a class="home-card" href="/프로젝트/">
+    <span class="home-card-title">Zenless_Zone_Zero</span>
+</a>
+  <a class="home-card" href="/프로젝트/">
+    <span class="home-card-title">Zenless_Zone_Zero</span>
+</a>
+</div>
 
 ### 대표 프로젝트
 - [[프로젝트/메인 프로젝트]]
