@@ -1,7 +1,5 @@
 @use "./base.scss";
 
-@import url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Thin.woff2");
-  
 :root {
   --page-width: 900px;
   --radius-soft: 14px;
@@ -10,7 +8,6 @@
   --shadow-soft-dark: 0 12px 32px rgba(0, 0, 0, 0.22);
 }
 
-/* 전체 폰트 */
 html,
 body {
   font-family: "SUIT Variable", "SUIT", "Noto Sans KR", sans-serif;
@@ -19,7 +16,6 @@ body {
   line-break: auto;
 }
 
-/* 코드 폰트는 유지 */
 code,
 pre,
 kbd,
