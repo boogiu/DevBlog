@@ -4,7 +4,7 @@
 
  
 **벡터를 템플릿으로**
-```
+```cpp
 template<typename T>
 void PrintVec(vector<T>& vec) {
 	for (typename vector<T>::iterator iter = vec.begin(); iter != vec.end(); ++iter) 

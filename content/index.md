@@ -10,34 +10,37 @@ description: 프로젝트 기록, 공부 정리, 트러블슈팅 아카이브
 > 결과만 남기기보다  
 > **왜 이렇게 설계했는지**, **어떤 문제가 있었는지**, **어떻게 해결했는지**를 함께 기록합니다.
 
+## 관심 키워드
+
+`C++` `DirectX11` `Rendering` `Engine` `Game Client` `Optimization` `Tooling`
+
 ---
 
 ## 빠른 이동
 
 <div class="card-grid">
-  <a class="home-card" href="/프로젝트/">
-    <span class="home-card-title">Projects</span>
-    <span class="home-card-desc">진행한 프로젝트, 구현 기능, 구조 설계 기록</span>
-      <span class="home-card-badge">바로가기</span>
-</a>
-
-  <a class="home-card" href="/공부/">
-    <span class="home-card-title">Study</span>
+	  <a class="home-card" href="/프로젝트/">
+	<div class="home-card-body">  
+		<span class="home-card-title">Projects</span>
+	    <span class="home-card-desc">진행한 프로젝트, 구현 기능, 구조 설계 기록</span>
+	    <span class="home-card-badge">바로가기</span>
+	</div>
+	  </a>
+    
+<a class="home-card" href="/공부 기록/">
+    <div class="home-card-body">  <span class="home-card-title">Study</span>
     <span class="home-card-desc">렌더링, 엔진 구조, CS, 게임 프로그래밍 정리</span>
-      <span class="home-card-badge">바로가기</span>
+    <span class="home-card-badge">바로가기</span>
+  </div>
 </a>
 
-  <a class="home-card" href="/트러블슈팅/">
-    <span class="home-card-title">Troubleshooting</span>
+<a class="home-card" href="/프로젝트/TroubleShooting/">
+         <div class="home-card-body">  
+ <span class="home-card-title">Troubleshooting</span>
     <span class="home-card-desc">오류 원인 분석, 해결 과정, 디버깅 기록</span>
-     <span class="home-card-badge">바로가기</span>
+    <span class="home-card-badge">바로가기</span>
+ </div>
  </a>
-
-  <a class="home-card" href="/개발-로그/">
-    <span class="home-card-title">Dev Log</span>
-    <span class="home-card-desc">작업 흐름, 실험, 변경 사항을 가볍게 기록</span>
-      <span class="home-card-badge">바로가기</span>
-</a>
 </div>
 
 ---
@@ -58,37 +61,45 @@ description: 프로젝트 기록, 공부 정리, 트러블슈팅 아카이브
 
 > [!abstract] 진행한 프로젝트와 구현 기록
 > 직접 만들거나 다듬은 시스템, 기능, 구조를 정리한 문서들입니다.
-<div class="card-grid">
-  <a class="home-card" href="/프로젝트/">
-    <span class="home-card-title">Zenless_Zone_Zero</span>
-</a>
 
-    <a class="home-card" href="/프로젝트/">
-    <span class="home-card-title">Zenless_Zone_Zero</span>
+
+<div class="card-grid">
+<a class="home-card" href="/프로젝트/Project_ZZZ/Zenless_Zone_Zero-(개요)">  
+<div class="home-card-media">  
+<img
+      class="home-card-image"
+      src="/Assets/WipeOut.png"
+      alt="Zenless Zone Zero 썸네일"
+    />
+</div>  
+  
+<div class="home-card-body">  
+<div class="home-card-meta">  
+<span class="home-card-badge">#대표 프로젝트</span>  
+<span class="home-card-tag">#팀</span>  
+</div>  
+<span class="home-card-title">Zenless_Zone_Zero</span>  
+<span class="home-card-desc">  전투 시스템, 카메라 연출, 렌더링 파이프라인을 구현한 팀 프로젝트  </span>  
+</div>  
 </a>
-  <a class="home-card" href="/프로젝트/">
-    <span class="home-card-title">Zenless_Zone_Zero</span>
-</a>
-  <a class="home-card" href="/프로젝트/">
-    <span class="home-card-title">Zenless_Zone_Zero</span>
+<a class="home-card" href="/프로젝트/모여봐요, 동물의 숲">  
+<div class="home-card-media">  
+<img  
+class="home-card-image"  
+  src="/Assets/AnimalHorizon.png"
+alt="모여봐요 동물의 숲 썸네일"  
+/>  
+</div>  
+  
+<div class="home-card-body">  
+<div class="home-card-meta">  
+<span class="home-card-tag">개인</span>  
+</div>  
+<span class="home-card-title">모여봐요, 동물의 숲</span>  
+<span class="home-card-desc">  엔진 구조와 게임 플레이 기능 구현을 중심으로 제작한 개인 프로젝트 </span>  
+</div>  
 </a>
 </div>
-
-### 대표 프로젝트
-- [[프로젝트/메인 프로젝트]]
-- [[프로젝트/엔진]]
-- [[프로젝트/렌더링 시스템]]
-- [[프로젝트/전투 시스템]]
-- [[프로젝트/UI 시스템]]
-- [[프로젝트/툴 제작]]
-
-### 구현 상세
-- [[프로젝트/리소스 관리]]
-- [[프로젝트/애니메이션 시스템]]
-- [[프로젝트/비디오 시스템]]
-- [[프로젝트/오디오 시스템]]
-- [[프로젝트/오클루전 컬링]]
-- [[프로젝트/디버그 도구]]
 
 ---
 
@@ -97,29 +108,9 @@ description: 프로젝트 기록, 공부 정리, 트러블슈팅 아카이브
 > [!tip] 공부한 내용 정리
 > 개념을 이해한 뒤, 실제 구현 관점에서 다시 정리한 문서들입니다.
 
-### 그래픽스 / 렌더링
-- [[공부/렌더링 파이프라인]]
-- [[공부/PBR]]
-- [[공부/쉐이더]]
-- [[공부/그림자]]
-- [[공부/포스트 프로세싱]]
-- [[공부/오클루전 컬링]]
-
-### 게임 프로그래밍
-- [[공부/게임 루프]]
-- [[공부/컴포넌트 구조]]
-- [[공부/씬 관리]]
-- [[공부/충돌 처리]]
-- [[공부/상태 머신]]
-- [[공부/이벤트 시스템]]
-
-### CS / 기본기
-- [[공부/자료구조]]
-- [[공부/알고리즘]]
-- [[공부/운영체제]]
-- [[공부/메모리 관리]]
-- [[공부/멀티스레딩]]
-- [[공부/네트워크]]
+- [[공부 기록/자료구조]]
+- [[공부 기록/C++]]
+- [[공부 기록/CS]]
 
 ---
 
@@ -135,33 +126,3 @@ description: 프로젝트 기록, 공부 정리, 트러블슈팅 아카이브
 - [[트러블슈팅/오디오]]
 - [[트러블슈팅/빌드 에러]]
 - [[트러블슈팅/툴 문제]]
-
----
-
-## Dev Log
-
-> [!example] 작업 흐름과 변경 기록
-> 기능 추가, 구조 수정, 실험 내용을 가볍게 쌓아두는 공간입니다.
-
-- [[개발 로그/이번 주 작업]]
-- [[개발 로그/렌더링 개선]]
-- [[개발 로그/UI 정리]]
-- [[개발 로그/엔진 리팩토링]]
-- [[개발 로그/성능 최적화]]
-
-
----
-
-## 관심 키워드
-
-`C++` `DirectX11` `Rendering` `Engine` `Game Client` `Optimization` `Tooling`
-
----
-
-## 마무리
-
-이 블로그는  
-**프로젝트 결과물**, **공부한 내용**, **문제 해결 과정**을 함께 쌓아가는 공간입니다.
-
-천천히 정리하더라도,  
-나중에 다시 봤을 때 흐름이 남는 기록을 목표로 합니다.

@@ -176,14 +176,17 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
 
   // precompute style prop strings as pixi doesn't support css variables
   const cssVars = [
-    "--secondary",
-    "--tertiary",
-    "--gray",
-    "--light",
-    "--lightgray",
-    "--dark",
-    "--darkgray",
-    "--bodyFont",
+  "--secondary",
+  "--tertiary",
+  "--gray",
+  "--light",
+  "--lightgray",
+  "--dark",
+  "--darkgray",
+  "--bodyFont",
+  "--graph-current",
+  "--graph-current-ring",
+  "--graph-current-label",
   ] as const
   const computedStyleMap = cssVars.reduce(
     (acc, key) => {
@@ -195,16 +198,15 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
 
   // calculate color
   const color = (d: NodeData) => {
-    const isCurrent = d.id === slug
-    if (isCurrent) {
-      return computedStyleMap["--secondary"]
-    } else if (visited.has(d.id) || d.id.startsWith("tags/")) {
-      return computedStyleMap["--tertiary"]
-    } else {
-      return computedStyleMap["--gray"]
-    }
+  const isCurrent = d.id === slug
+  if (isCurrent) {
+    return computedStyleMap["--graph-current"]
+  } else if (visited.has(d.id) || d.id.startsWith("tags/")) {
+    return computedStyleMap["--tertiary"]
+  } else {
+    return computedStyleMap["--gray"]
   }
-
+}
   function nodeRadius(d: NodeData) {
     const numLinks = graphData.links.filter(
       (l) => l.source.id === d.id || l.target.id === d.id,
@@ -390,16 +392,18 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
     label.scale.set(1 / scale)
 
     let oldLabelOpacity = 0
-    const isTagNode = nodeId.startsWith("tags/")
-    const gfx = new Graphics({
-      interactive: true,
-      label: nodeId,
-      eventMode: "static",
-      hitArea: new Circle(0, 0, nodeRadius(n)),
-      cursor: "pointer",
-    })
-      .circle(0, 0, nodeRadius(n))
-      .fill({ color: isTagNode ? computedStyleMap["--light"] : color(n) })
+   const isTagNode = nodeId.startsWith("tags/")
+const isCurrentNode = nodeId === slug
+
+const gfx = new Graphics({
+  interactive: true,
+  label: nodeId,
+  eventMode: "static",
+  hitArea: new Circle(0, 0, isCurrentNode ? nodeRadius(n) + 2 : nodeRadius(n)),
+  cursor: "pointer",
+})
+  .circle(0, 0, isCurrentNode ? nodeRadius(n) + 1.5 : nodeRadius(n))
+  .fill({ color: isTagNode ? computedStyleMap["--light"] : color(n) })
       .on("pointerover", (e) => {
         updateHoverInfo(e.target.label)
         oldLabelOpacity = label.alpha
@@ -416,8 +420,12 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
       })
 
     if (isTagNode) {
-      gfx.stroke({ width: 2, color: computedStyleMap["--tertiary"] })
-    }
+  gfx.stroke({ width: 2, color: computedStyleMap["--tertiary"] })
+}
+
+if (isCurrentNode) {
+  gfx.stroke({ width: 3, color: computedStyleMap["--graph-current-ring"] })
+}
 
     nodesContainer.addChild(gfx)
     labelsContainer.addChild(label)
