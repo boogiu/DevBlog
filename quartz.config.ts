@@ -1,14 +1,11 @@
 import { QuartzConfig } from "./quartz/cfg"
 import * as Plugin from "./quartz/plugins"
-
-/**
- * Quartz 4 Configuration
- *
- * See https://quartz.jzhao.xyz/configuration for more information.
- */
+import { ToggleCard } from "./quartz/plugins/transformers/toggleCard"
+import { ProjectHero } from "./quartz/plugins/transformers/projectHero"
+import { ImageBox } from "./quartz/plugins/transformers/imageBox"
 const config: QuartzConfig = {
   configuration: {
-  pageTitle: "부기의 개발 노트",
+  pageTitle: "정부기 DevBlog",
   pageTitleSuffix: " | Devlog",
   enableSPA: true,
   enablePopovers: true,
@@ -35,7 +32,7 @@ const config: QuartzConfig = {
           secondary: "#284b63",
           tertiary: "#84a59d",
           highlight: "rgba(143, 159, 169, 0.15)",
-          textHighlight: "#fff23688",
+          textHighlight: "#ffb300cb",
         },
         darkMode: {
           light: "#161618",
@@ -46,31 +43,34 @@ const config: QuartzConfig = {
           secondary: "#7b97aa",
           tertiary: "#84a59d",
           highlight: "rgba(143, 159, 169, 0.15)",
-          textHighlight: "#b3aa0288",
+          textHighlight: "#a300a37a",
         },
       },
     },
   },
   plugins: {
-    transformers: [
-      Plugin.FrontMatter(),
-      Plugin.CreatedModifiedDate({
-        priority: ["frontmatter", "git", "filesystem"],
-      }),
-      Plugin.SyntaxHighlighting({
-        theme: {
-          light: "github-light",
-          dark: "github-dark",
-        },
-        keepBackground: false,
-      }),
-      Plugin.ObsidianFlavoredMarkdown({ enableInHtmlEmbed: false }),
-      Plugin.GitHubFlavoredMarkdown(),
-      Plugin.TableOfContents(),
-      Plugin.CrawlLinks({ markdownLinkResolution: "shortest" }),
-      Plugin.Description(),
-      Plugin.Latex({ renderEngine: "katex" }),
-    ],
+   transformers: [
+  Plugin.FrontMatter(),
+  ToggleCard(),
+  ProjectHero(),
+  ImageBox(),
+  Plugin.CreatedModifiedDate({
+    priority: ["frontmatter", "git", "filesystem"],
+  }),
+  Plugin.SyntaxHighlighting({
+    theme: {
+      light: "github-light",
+      dark: "github-dark",
+    },
+    keepBackground: false,
+  }),
+  Plugin.ObsidianFlavoredMarkdown({ enableInHtmlEmbed: false }),
+  Plugin.GitHubFlavoredMarkdown(),
+  Plugin.TableOfContents(),
+  Plugin.CrawlLinks({ markdownLinkResolution: "shortest" }),
+  Plugin.Description(),
+  Plugin.Latex({ renderEngine: "katex" }),
+],
     filters: [Plugin.RemoveDrafts()],
     emitters: [
       Plugin.AliasRedirects(),

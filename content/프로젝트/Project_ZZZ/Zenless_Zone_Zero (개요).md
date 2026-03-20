@@ -5,176 +5,246 @@ tags:
   - 모작
 summary: 전투 시스템과 렌더링 구조 정리
 date: 2026-03-19
-title: Zenless-Zone-Zero (개요)
+title: Zenless-Zone-Zero
 banner: "/Assets/ZZZlogo.png"
-banner_x: "100%"
+banner_x: 100%
 banner_y: 0.08
-banner_height: "280px"
+banner_height: 280px
 ---
+## 프로젝트 개요
 
- <div class="project-hero">
-  <a
-  class="video-card"
-  href="https://youtu.be/dLrBe25qEa4?si=ag2STpmcWPwwOvOl"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  <div class="video-card-media">
-    <img
-      class="video-card-image"
-      src="https://i.ytimg.com/vi/dLrBe25qEa4/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGGUgZShlMA8=&amp;rs=AOn4CLDAagpx5CSJXU1etx1B6xOlo98rXQ"
-      alt="ZZZ 포트폴리오 최종 영상 - 젠레스 존제로 썸네일"
-    />
-  </div>
-  <div class="video-card-body">
-    <div class="video-card-host">
-      <img
-        class="video-card-favicon"
-        src="https://www.youtube.com/s/desktop/c376667c/img/favicon_32x32.png"
-        alt="YouTube"
-      />
-      <span>youtu.be</span>
-    </div>
-    <div class="video-card-title-row">
-      <span class="video-card-title">ZZZ 클라이언트 프로그래머 포트폴리오</span>
-      <span class="video-card-tag">모작</span>
-    </div>
-    <div class="video-card-desc">
-       DirectX 11 기반 커스텀 엔진으로 제작한 게임 플레이 영상
-    </div>
-    <p class="project-text">
-      HOYOPlay 사의 Zenless-Zone-Zero를 모작한 팀 프로젝트 영상입니다.<br/>
-      해당 프로젝트에서 프레임워크 / 보스 / 연출 및 최적화를 담당했습니다.
-    </p>
-  </div>
-</a>
-  <section class="project-summary-card">
-    <div class="project-summary-header">
-      <div class="project-summary-kicker">대표 프로젝트</div>      
-      <h2 class="project-summary-title">Zenless Zone Zero 모작 프로젝트</h2>
-    </div>
-    <div class="project-meta-grid">
-      <div class="project-meta-item">
-        <span class="project-meta-label">기간</span>
-        <span class="project-meta-value">2025.12.09 ~ 2026.02.10</span>
-      </div>
-      <div class="project-meta-item">
-        <span class="project-meta-label">인원</span>
-        <span class="project-meta-value">팀 8인</span>
-      </div>
-      <div class="project-meta-item">
-        <span class="project-meta-label">주요 담당</span>
-        <span class="project-meta-value">
-        엔진(프레임워크) / 보스 </span>
-      </div>
-      <div class="project-meta-item">
-        <span class="project-meta-label">개발 환경</span>
-        <span class="project-meta-value">VisualStudio 2022</span>
-      </div>
-    </div>
-    <div class="project-stack">
-      <div class="project-section-title">기술 스택</div>
-      <div class="stack-list">
-        <span class="stack-tag">C++</span>
-        <span class="stack-tag">DirectX 11</span>
-        <span class="stack-tag">WinAPI</span>
-        <span class="stack-tag">HLSL</span>
-        <span class="stack-tag">PhysX</span>
-        <span class="stack-tag">FMOD</span>
-        <span class="stack-tag">ImGui</span>
-      </div>
-    </div>
-    <div class="project-contribution">
-      <div class="project-section-title">기여도</div>
-      <div class="contribution-row">
-        <div class="contribution-head">
-          <span>프레임워크</span>
-          <span>90%</span>
-        </div>
-        <div class="contribution-bar">
-          <div class="contribution-fill" style="--ratio: 90%"></div>
-        </div>
-      </div>
-      <div class="contribution-row">
-        <div class="contribution-head">
-          <span>렌더링 최적화</span>
-          <span>80%</span>
-        </div>
-        <div class="contribution-bar">
-          <div class="contribution-fill" style="--ratio: 80%"></div>
-        </div>
-      </div>
-      <div class="contribution-row">
-        <div class="contribution-head">
-          <span>전투 컨텐츠</span>
-          <span>20%</span>
-        </div>
-        <div class="contribution-bar">
-          <div class="contribution-fill" style="--ratio: 30%"></div>
-        </div>
-      </div>
-      <div class="contribution-row">
-        <div class="contribution-head">
-          <span>서브 컨텐츠(필드)</span>
-          <span>20%</span>
-        </div>
-        <div class="contribution-bar">
-          <div class="contribution-fill" style="--ratio:30%"></div>
-        </div>
-      </div>
-        <div class="contribution-row">
-        <div class="contribution-head">
-          <span>디버그 / 툴링</span>
-          <span>30%</span>
-        </div>
-        <div class="contribution-bar">
-          <div class="contribution-fill" style="--ratio:30%"></div>
-        </div>
-      </div>
-  </section>
-</div>
-
+{% projecthero
+videoUrl: https://youtu.be/dLrBe25qEa4?si=ag2STpmcWPwwOvOl
+videoThumb: https://i.ytimg.com/vi/dLrBe25qEa4/maxresdefault.jpg
+videoTitle: ZZZ 클라이언트 프로그래머 포트폴리오
+videoTag: 모작
+videoDesc: DirectX 11 기반 커스텀 엔진으로 제작한 게임 플레이 영상
+host: youtu.be
+videoFavicon: https://www.youtube.com/s/desktop/c376667c/img/favicon_32x32.png
+summaryText: HOYOPlay 사의 Zenless-Zone-Zero를 모작한 팀 프로젝트 영상입니다.<br/>해당 프로젝트에서 프레임워크 / 보스 / 연출 및 최적화를 담당했습니다.
+kicker: 대표 프로젝트
+projectTitle: Zenless Zone Zero 모작 프로젝트
+githubUrl: https://github.com/boogiu/Zeless_Zone_Zero
+githubTitle: GitHub Repository
+githubDesc: 프로젝트 소스 코드 및 구조 정리
+githubHost: https://github.com/boogiu/Zeless_Zone_Zero.git
+githubFavicon: https://github.githubassets.com/favicons/favicon.svg
+period: 2025.12.09 ~ 2026.02.10
+members: 팀 8인
+role: 엔진(프레임워크) / 보스
+env: VisualStudio 2022
+stack: C++, DirectX 11, WinAPI, HLSL, PhysX, FMOD, ImGui, GitHub
+contrib: 프레임워크=90 | 렌더링 최적화=80 | 전투 컨텐츠=20 | 서브 컨텐츠(필드)=20 | 디버그 / 툴링=30
+%}
 
 --- 
 ## 프레임워크
-- [[#사용 디자인 패턴]]
-- [[#셰이더 리소스 추상화]]
-- [[#렌더링 시스템 설계]]
-- [[#렌더링 최적화]]
-- [[#오브젝트 구조 설계]]
-
-### 사용 디자인 패턴 ([[디자인 패턴|자세히 보기]])
-- 컴포넌트 패턴
-- 싱글톤 패턴
-- 서비스 패턴
-- 프로토타입 패턴
-- 빌더 패턴
-- 옵저버 패턴
-- 커맨드 패턴
-
-### 셰이더 리소스 추상화
-- 리소스 간 관계 설계
-- 셰이더 추상화
-- 머티리얼 추상화
-- 메쉬 추상화
-- 메쉬 스키닝
-- 모델 파싱 툴
-
-### 렌더링 시스템 설계
-- 렌더링 패킷
-- 렌더 패스
-- 엔진 렌더 타겟 구조
-- 커스텀 렌더 타겟 구조
-- 최적화
 
 ### 오브젝트 구조 설계
-- GameObject / UIObject
-- 오브젝터 빌더
-- 오브젝트 부모-자식 계층 관계
+{% toggle "컴포넌트 기반 GameObject 구조"%}
+객체와 기능의 분리. 기능의 컴포넌트화.
 
-### 오디오 시스템 설계
-### 비디오 디코딩 설계
-### 이벤트 시스템 설계
+다이렉트 X를 사용하게 되면서부터 주로 사용했던 컴포넌트 패턴을 적용하였다.
+프로젝트 규모가 커지면서, 상속만으로 오브젝트의 기능을 확장하는 방식에는 한계가 있다고 판단한 이후로, 지속적으로 애용하는 패턴이다.
 
-## 스테이지 / Room
-## qhtm
+==GameObject는 생명주기와 계층 관리==에 집중시키고,  Transform, Model, Animator, AudioSource와 같은 기능은 개별 컴포넌트로 분리.  
+각 오브젝트는 필요한 컴포넌트를 조합하는 방식으로 구성하여,  기능 단위의 ==재사용성과 확장성==을 높일 수 있도록 설계했다.  
+  
+또한 컴포넌트에는 상시 Update 루프를 최대한 두지 않고, ==Dirty Flag와 Snapshot 기반으로 필요한 시점에만 상태를 갱신==하도록 구성했다.  
+이를 통해 불필요한 갱신 비용을 줄이고, 오브젝트 수가 늘어나는 상황에서도 보다 효율적으로 관리할 수 있었다.
+{% image
+src: /Assets/ComponentPattern.png
+alt: ComponentPattern
+caption: 컴포넌트 추가 예시
+width: 90%
+ratio: 16 / 9
+fit: contain
+align : center
+%}
+
+{% endtoggle %}
+{% toggle "부모-자식 계층 관리" %}
+깊어지는 오브젝트 계층 구조
+
+클래스와 클래스의 관계가 아닌 GameObject와 GameObject 사이의 계층 구조가 필요하다고 느꼈습니다.
+예를 들어 플레이어의 손에 부착되는 무기, 하나의 객체에 종속되어 함께 움직이는 여러 충돌체, 그리고 복합적인 UI 구성 요소들은 모두 특정 오브젝트를 기준으로 함께 관리되어야 할 필요성이 생겼다.
+
+이러한 요구를 해결하기 위해 `ObjectContainer`와 `Child` 컴포넌트를 두어 부모-자식 관계를 식별하고 관리할 수 있도록 구성했다.
+이를 통해 계층 구조를 상속으로 강제하지 않고, 필요한 오브젝트에만 관계를 부여할 수 있도록 했다.
+
+부모-자식 관계에서는 자식 오브젝트의 업데이트와 생명주기를 부모가 책임지도록 설계했다.
+반면 오브젝트를 관리하는 매니저는 계층 전체를 직접 다루지 않고,최상위 부모인 Root 오브젝트만을 관리하도록 역할을 분리했습니다. 이를 통해 관리 주체를 단순화하면서도, 하위 오브젝트는 부모를 통해 일관되게 제어할 수 있었다.
+
+또한 클라이언트 코드에서 설계 의도와 다르게 자식 관계를 직접 조작하는 상황을 방지하기 위해,
+`Child` 컴포넌트의 주요 함수는 private으로 두고 `ObjectContainer`만 friend class로 허용했다.
+즉, 부모-자식 관계의 생성과 변경은 지정된 관리 주체를 통해서만 이루어지도록 제한했다.
+
+>초기에는 부모 역할을 하는 클래스를 상속하고, 자식 역할을 하는 클래스를 따로 상속받는 방식도 고려했으나, 
+>이 방식은 부모-부모-자식처럼 깊어지는 계층 구조를 유연하게 표현하기 어려웠고, 결국 관계 자체를 컴포넌트로 분리하는 쪽이 더 적합하다고 판단했다.
+>
+{% endtoggle %}
+
+{% toggle "오브젝트 생성 파이프라인" %}
+프로토타입과 초기 설정값의 분리
+
+오브젝트 생성 시마다 외부 리소스를 다시 읽거나 무거운 초기화 과정을 반복하지 않도록, 프로토타입 기반 생성 방식을 도입했다.
+각 객체의 원본이 되는 프로토타입을 미리 준비해두고, 실제 생성 시에는 이를 복제하여 사용하는 방식으로 생성 비용을 줄이고 생성 경로를 단순화했다.
+
+다만 같은 프로토타입에서 생성되더라도,객체마다 서로 다른 초기 설정값이 필요한 경우가 많았다.
+예를 들어 같은 몬스터 원본에서 생성되더라도, 각 인스턴스는 서로 다른 위치나 초기 상태를 가져야 했다.
+
+이를 위해 빌더를 함께 도입하여, 프로토타입 복제 이후 필요한 초기값을 유연하게 주입할 수 있도록 구성했다. 빌더는 다음과 같은 방향으로 설계했다.
+
+1. 빌더 객체는 일시적인 조립 도구로 사용하고, 스코프가 끝나면 자연스럽게 정리될 수 있도록 구성한다
+2. 각 빌더 함수는 하나의 컴포넌트 혹은 하나의 설정 책임만 담당하도록 분리한다.
+3. 사용자가 특정 빌더 흐름에 과하게 종속되지 않도록, 필요한 타입의 값을 유연하게 전달할 수 있도록 설계한다.
+
+이 구조를 통해 프로토타입은 공통 원형을 담당하고, 빌더는 인스턴스별 초기 설정을 담당하도록 역할을 분리할 수 있었다.
+
+{% endtoggle %}
+
+### 멀티스레드 구현
+{% toggle "워커 스레드 구현"%}
+리소스 로딩 중 메인 스레드의 렌더링 흐름이 끊기는 문제를 줄이기 위해 멀티스레드 기반 로딩 파이프라인을 구성했다.
+특히 텍스처 로딩 구간에서 프레임 드랍이 두드러졌기 때문에, 무거운 작업을 메인 스레드 밖으로 분리할 필요가 있었다.
+
+이를 위해 ThreadPool 객체를 만들고, 사용자가 지정한 수만큼 워커 스레드를 생성한 뒤 대기 상태로 유지했다.
+작업이 들어오면 워커가 이를 가져가 처리하고, 큐가 비면 다시 sleep 상태로 돌아가도록 구성했다.
+
+작업 등록은 템플릿 기반 enqueue 함수로 처리했다.
+사용자는 원하는 함수와 인자를 넘길 수 있고, 반환 타입 역시 `std::invoke_result_t`와 `std::future`를 통해 자연스럽게 받을 수 있도록 했다.
+
+template <class Function, class... Args>
+auto enqueue(Function&& func, Args&&... args)
+    -> future<invoke_result_t<Function, Args...>>;
+
+초기에는 Critical Section을 사용했지만, 이후 `std::mutex`와 lock 기반 RAII 방식으로 정리했다.
+스코프를 벗어나면 자동으로 lock이 해제되도록 구성해 동기화 코드의 안정성과 가독성을 함께 높였다.
+{% endtoggle %}
+
+{% toggle "리소스 로딩 파이프라인" %}
+워커 스레드를 구성한 뒤에는 이를 활용해 리소스 로딩 파이프라인을 분리했다.
+기존에는 리소스 매니저가 로딩까지 함께 책임졌지만, 로딩 과정을 별도의 스케줄러로 분리해 역할을 나누는 쪽이 더 적절하다고 판단했다.
+
+이를 위해 Resource Manager와 별도로 Loading Scheduler를 두고,
+실제 로딩 요청은 이 스케줄러가 관리하도록 구성했다.
+스케줄러는 어떤 리소스를 어떤 방식으로 읽어올지에 대한 로딩 로직을 보관하고,
+등록된 요청들을 순차적으로 pump하면서 전체 개수와 완료 개수를 추적할 수 있도록 했다.
+
+초기 설계 단계에서는 엔진 내부 리소스뿐 아니라,
+클라이언트가 원하는 리소스와 로딩 방식도 직접 등록할 수 있도록 확장 가능한 구조를 목표로 했다.
+실제 프로젝트에서는 클라이언트 단의 커스텀 로딩까지 연결하지는 못했지만,
+로딩 로직을 외부에서 주입할 수 있는 형태로 구조를 열어두었다는 점에 의미가 있었다.
+{% endtoggle %}
+
+{% toggle "비디오 디코딩 파이프라인" %}
+컷씬과 UI 연출에서 비디오 재생이 필요해지면서, 별도의 비디오 디코딩 파이프라인을 구현했다.
+목표는 비디오 파일을 디코딩해 DirectX 텍스처로 변환하고, 이를 셰이더에서 사용할 수 있도록 만드는 것이었다.
+
+비디오 디코딩은 단순 리소스 로딩보다 처리 비용이 큰 편이어서,
+메인 스레드에서 직접 수행할 경우 프레임 저하가 발생할 가능성이 높다고 판단했다.
+그래서 이 역시 ThreadPool을 활용해 비동기적으로 처리하도록 구성했다.
+
+파이프라인은 크게 네 개의 객체로 구성했다.
+
+- 비디오의 재생 상태와 제어를 담당하는 VideoPlayer
+- 확장자별 디코딩 방식을 제공하는 Decoder
+- 디코딩된 프레임 데이터를 저장하는 FrameQueue
+- 현재 등록된 비디오 전체를 관리하는 VideoSystem
+
+VideoPlayer는 시작, 정지, 재생, 재재생 등의 상태를 atomic 변수로 관리하며 VideoSystem에 등록된다.
+VideoSystem은 플레이어의 상태를 확인해 적절한 디코더와 연결하고,
+디코더는 디코딩 결과를 RGBA 형태의 CPU 메모리 블롭으로 생성한다.
+
+생성된 프레임 데이터는 FrameQueue에 저장해두었다가,
+재생 시점이 도달하면 GPU 텍스처로 업로드하여 실제 렌더링에 사용할 수 있도록 했다.
+이 구조를 통해 비디오 디코딩과 렌더링 시점을 분리하고,
+컷씬과 UI 재생을 보다 안정적으로 처리할 수 있었다.
+{% endtoggle %}
+
+### 렌더링 시스템
+{% toggle "렌더링 리소스 추상화"%}
+렌더링 리소스는 메쉬와 머티리얼의 관계를 중심으로 정리했다.
+
+하나의 모델은 여러 개의 메쉬와 여러 개의 머티리얼을 가질 수 있고,
+각 메쉬는 자신이 사용할 머티리얼 인덱스를 보유하도록 구성했다.
+이를 통해 모델 단위의 데이터와 실제 렌더링 단위의 관계를 명확하게 나눌 수 있었다.
+
+메쉬는 본 정보와 모델 스페이스 기준 AABB를 포함하고,
+머티리얼은 셰이더 변수와 텍스처 등 실제 렌더링에 필요한 상태 정보를 담도록 구성했다.
+
+결과적으로 본, 메쉬, 머티리얼, 셰이더의 책임을 분리하면서도,
+실제 렌더링 시점에는 필요한 데이터를 일관된 경로로 참조할 수 있도록 정리했다.
+{% endtoggle %}
+
+{% toggle "렌더링 제출과 실행 단계의 분리"%}
+프로젝트 규모가 커지면서 드로우콜 수가 예상보다 크게 증가했다.
+한 시점에는 약 1만 3천 개 수준까지 늘어났고,
+그에 따라 프레임 저하도 눈에 띄게 심해졌다.
+
+최적화를 진행하기에 앞서 먼저 필요하다고 느낀 것은,
+흩어져 있는 렌더 책임을 한 곳으로 모으는 일이었다.
+기존에는 각 오브젝트가 자신의 렌더 루프를 직접 돌리는 구조였기 때문에,
+전체 렌더 흐름을 통제하거나 일괄 최적화를 적용하기가 어려웠다.
+
+그래서 오브젝트 단위의 렌더 호출을 제거하고,
+엔진 단위의 단일 렌더 루프를 두는 방식으로 구조를 바꿨다.
+이후 각 오브젝트는 직접 그리는 대신, 자신이 가진 렌더링 정보를 패킷 형태로 렌더 시스템에 제출하도록 구성했다.
+
+렌더 시스템은 제출된 패킷을 모아 필요한 순서대로 정리하고,
+이를 바탕으로 실제 드로우를 한 번에 수행한다.
+이 구조를 통해 렌더 흐름을 중앙에서 통제할 수 있게 되었고,
+이후 정렬, 배치, 패스 분리 같은 최적화를 적용할 수 있는 기반도 마련할 수 있었다.
+
+또한 동일하거나 유사한 렌더 상태를 한 번에 처리할 수 있게 되면서,
+상태 변경 비용을 줄이고 일부 캐시 효율 역시 기대할 수 있었다.
+{% endtoggle %}
+
+{% toggle "렌더링 최적화"%}
+3가지 컬링을 활용.
+프러스텀 컬링
+아일랜드 디비젼
+오클루전 컬링
+머티리얼 배칭
+{% endtoggle %}
+
+{% toggle "커맨드 패턴을 활용한 사용자 API 구성"%}
+{% endtoggle %}
+### 이벤트 시스템
+{% toggle "RTTI 기반 이벤트 구조체 관리" %}
+{% endtoggle %}
+{% toggle "옵저버 패턴을 활용한 이벤트 구독/방송" %}
+{% endtoggle %}
+
+---
+## 클라이언트
+
+### 보스(2)
+{% toggle "BlackBoard를 활용한 공통 데이터 제어" %}
+{% endtoggle %}
+{% toggle "Queue 를 활용한 공격 패턴 구현" %}
+{% endtoggle %}
+{% toggle "거리 기반 가중치를 활용한 추적 패턴" %}
+{% endtoggle %}
+{% toggle "SnapShot을 활용한 추적 딜레이 구현" %}
+{% endtoggle %}
+### 전투 연출 흐름 제어
+{% toggle "람다를 활용한 조건식" %}
+{% endtoggle %}
+{% toggle "SnapShot을 활용한 추적 딜레이 구현" %}
+{% endtoggle %} 
+### 백그라운드 NPC
+{% toggle "난수 기반 외형 편차" %}
+{% endtoggle %}
+{% toggle "WayPoint 기반 이동 구현" %}
+{% endtoggle %}
+### Stage 라우팅 (Battle stage)
+{% toggle "Graph 형태의 스테이지 구현" %}
+{% endtoggle %}
+
+### Room Directing (Field Room)
+{% toggle "Stack 형태의 룸 구현" %}
+{% endtoggle %}
+
+
+
