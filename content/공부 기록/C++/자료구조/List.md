@@ -1,9 +1,26 @@
 #자료구조
 #시퀀스컨테이너
 #List
-
 리스트는 양방향(혹은 단방향) 연결 구조체다.
-`노드 <->노드 <->노드` 와 같은 형태.
+`노드` <->`노드` <->`노드` 와 같은 형태.
+
+```cpp
+#include <list>
+
+list<int> intlist;
+
+intlist.push_back(19);
+intlist.pop_back();
+
+intlist.push_front(19);
+intlist.pop_front();
+
+for(list<int>::iterator iter; iter != intlist.end(); ++iter){
+	*iter; //로 순회
+}
+```
+
+
 
 그렇기에 vector처럼 임의 접근이 불가능하다.
 리스트는 시작 노드와 마지막 노드만을 기억하기 때문에 특정 노드에 접근하기 위해서는 링크들을 하나하나 따라가야 하는 단점이 있다.
@@ -43,3 +60,27 @@ intlist.unique(10);
 
 -> 포워드리스트는 리스트보다 링크가 하나 적기 때문에 용량이 상대적으로 작다.
 -> 앞 부분의 삽입 삭제의 경우 리스트보다 빠르다.
+
+----
+
+멤버함수로 sort가 존재함 (디폴트 오름차 순/ 조건자 삽입 가능)
+```
+intlist.sort(greater<int>());
+```
+
+원소들의 순서를 역순으로 바꾸는 함수.
+```
+intlist.reverse();
+```
+
+값이 일치하는 원소를 "모두" 삭제하는 함수
+```
+intlist.remove(1);
+intlist.remove_if(조건자); // 조건자에 해당하는 원소를 삭제하는 함수
+```
+
+특정 리스트를 오려넣기 하는 함수.
+```
+intlist.splice(이터레이터, 삽입할리스트);
+```
+(`intlist`의 iterator 위치에, 2번째 매개인자에 오려넣기 하는 함수임. 원본은 삭제되는 것. )

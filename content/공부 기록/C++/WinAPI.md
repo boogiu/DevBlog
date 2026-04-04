@@ -1,0 +1,278 @@
+#winapi
+
+## API 
+Application Programming Iterface
+
+운영체제 마다 api가 존재한다. 
+우리는 윈도우 기반의 winapi (winapi32) 이다.
+
+winapi는 C언어 기반의 api (C++은 mfc)임.
+
+첫 화면
+윈도우 초기화 구문 : 윈도우(창)의 초기화 및 생성을 하는 곳
+
+API부터 모든 문자는 유니코드 기반의 문자. 
+대문자 형식은 typedef된 것들.
+
+핸들 16진수 형태의 고유 식별 번호
+
+About 함수 도움말 : 정보 띄워주는 함수
+
+
+라이브러리 :
+남이 작성한 코드를 암호화하여 사용하기 위한 파일
+
+GDI : 그래픽 디바이스 인터페이스 - > 화면처리와 그래픽 담당 명령어 집합
+알파 블렌드? GDI + 
+
+
+디바이스 컨텍스트 :  출력에 관한 정보를 가지고 있는 구조체
+
+---
+
+> [!NOTE] 수업 기록 재정리
+
+### 전역 변수
+```c
+HINSTANCE hInst;                                // 현재 인스턴스입니다.
+WCHAR szTitle[MAX_LOADSTRING];                  // 제목 표시줄 텍스트입니다.
+WCHAR szWindowClass[MAX_LOADSTRING];            // 기본 창 클래스 이름입니다.
+```
+
+### 함수의 전방선언
+```c
+ATOM                MyRegisterClass(HINSTANCE hInstance);
+BOOL                InitInstance(HINSTANCE, int);
+LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
+INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
+```
+* 보통 h가 붙으면 핸들
+
+### 메인 함수
+```c
+int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
+                     _In_opt_ HINSTANCE hPrevInstance,
+                     _In_ LPWSTR    lpCmdLine,
+                     _In_ int       nCmdShow)
+{
+    UNREFERENCED_PARAMETER(hPrevInstance);
+    UNREFERENCED_PARAMETER(lpCmdLine);
+
+    LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
+    LoadStringW(hInstance, IDC_DEFAULTWINDOW, szWindowClass, MAX_LOADSTRING);
+    MyRegisterClass(hInstance);
+
+    // 애플리케이션 초기화를 수행합니다:
+    if (!InitInstance (hInstance, nCmdShow))
+    {
+        return FALSE;
+    }
+
+    HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_DEFAULTWINDOW));
+
+    MSG msg;
+
+    // 기본 메시지 루프입니다:
+    while (GetMessage(&msg, nullptr, 0, 0))
+    {
+        if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
+        {
+            TranslateMessage(&msg);
+            DispatchMessage(&msg);
+        }
+    }
+
+    return (int) msg.wParam;
+}
+
+```
+
+함수의 진입점이라고 보면 좋음
+`szWindowClass` 는 실행 파일이라고 보아도 무방함
+```c
+    HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_DEFAULTWINDOW));
+```
+단축키를 불러오는 객체
+
+```c
+ while (GetMessage(&msg, nullptr, 0, 0))
+    {
+        if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
+        {
+            TranslateMessage(&msg);
+            DispatchMessage(&msg);
+        }
+    }
+```
+메시지 큐에서 메시지를 가져오는 함수
+메시지 큐의 경우, 메시지가 있다면 true / 없다면 block(대기) / 종료 메시지가 왔을 때 (false) 반환함.
+
+만약, 
+메시지가 종료 메시지가 아니고, 
+단축키 테이블에 등록된 것이 아니라면
+메시지를 해석하고 DispatchMessage(&msg); 한다.
+
+이때 DispatchMessage(&msg); 안에는 winproc(윈도우 프로시저)가 들어있어서, 메시지에 따라 호출이 된다.
+
+```c
+ATOM MyRegisterClass(HINSTANCE hInstance)
+{
+    WNDCLASSEXW wcex;   // 윈도우 창 생성을 위해 값을 채워야할 구조체
+    wcex.cbSize = sizeof(WNDCLASSEX);       // 자기 자신의 사이즈를 저장
+    wcex.style          = CS_HREDRAW | CS_VREDRAW;
+    // 가로 다시 그리기 | 세로 다시 그리기
+    // 윈도우 창의 스타일 정의, 초기화 되는 값이 창의 수평, 수직 크기가 변할 경우 다시 그리기를 말하는 옵션
+
+    wcex.lpfnWndProc    = WndProc;
+    // 메세지 처리기 함수의 이름을 전달
+    wcex.cbClsExtra     = 0;
+    wcex.cbWndExtra     = 0;
+    // 윈도우가 특수한 목적으로 사용하는 여분의 공간(일종의 예약 영역)
+
+    wcex.hInstance      = hInstance;
+    // 윈도우 클래스를 사용하는 프로그램의 번호를 설정, main함수 매개 변수 전달 값이 자동 사용
+    wcex.hIcon          = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_DEFAULTWINDOW));
+    // 윈도우 차이 사용할 아이콘 지정
+    wcex.hCursor        = LoadCursor(nullptr, IDC_ARROW);
+    // 창에서 사용할 마우스 커서
+    wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1);
+    // 창 배경 색상
+    wcex.lpszMenuName = NULL; //MAKEINTRESOURCEW(IDC_DEFAULTWINDOW);
+    // 창 메뉴
+    wcex.lpszClassName  = szWindowClass;
+    // 실행 파일 이름 지정
+    wcex.hIconSm        = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
+    // 창 상단의 아이콘
+
+    return RegisterClassExW(&wcex);
+}
+```
+
+```c
+BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
+{
+   hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
+
+   HWND hWnd = CreateWindowW(szWindowClass,     // 클래스 이름(실행 파일 이름)
+                            szTitle,            // 창 위에 띄울 문자열
+                            WS_OVERLAPPEDWINDOW, // 윈도우 창 스타일 옵션(기본 창 모양)
+                            CW_USEDEFAULT, 0,   // 창 생성 위치(X, Y 좌표)
+                            800, 600,           // 창의 가로, 세로 사이즈
+                            nullptr,            // 부모 윈도우 핸들
+                            nullptr,            // 윈도우에서 사용할 메뉴 핸들
+                            hInstance,          // 윈도우를 만드는 주체
+                            nullptr);           // 운영체제가 특수한 목적으로 사용
+
+   if (!hWnd)
+   {
+      return FALSE;
+   }
+
+   ShowWindow(hWnd, nCmdShow);
+   UpdateWindow(hWnd);
+
+   return TRUE;
+}
+```
+
+```c
+RECT rc{ 100, 100, 200, 200 };
+
+
+LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+    switch (message)
+    {
+    case WM_CREATE:
+
+        SetTimer(hWnd, 0, 0, 0);
+        // 타이머 설치 함수
+        // 1. 윈도우 핸들
+        // 2. 타이머 id
+        // 3. 타이머 주기(default 1 / 1000)
+        // 4. NULL인 경우 3 매개 변수 주기로 WM_TIMER 메세지를 발생시킴
+        break;
+
+    case WM_TIMER:
+
+        InvalidateRect(hWnd, 0, TRUE);
+        // 윈도우 갱신 함수
+        // 1. 갱신할 윈도우 핸들
+        // 2. 윈도우 갱신 범위(NULL 인 경우 화면 전체 영역)
+        // 3. TRUE : 그려져 있지 않는 부분도 갱신
+        //   FALSE : 새로 그리는 부분만 갱신
+        break;
+
+    case WM_COMMAND:
+        {
+            int wmId = LOWORD(wParam);
+            // 메뉴 선택을 구문 분석합니다:
+            switch (wmId)
+            {
+            case IDM_ABOUT:
+                DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
+                break;
+            case IDM_EXIT:
+                DestroyWindow(hWnd);
+                break;
+            default:
+                return DefWindowProc(hWnd, message, wParam, lParam);
+            }
+        }
+        break;
+    case WM_PAINT:
+        {
+            PAINTSTRUCT ps;
+
+            // dc : 출력에 관한 정보를 갖고 있는 구조체
+            HDC hdc = BeginPaint(hWnd, &ps);
+            Rectangle(hdc, rc.left, rc.top, rc.right, rc.bottom);
+            EndPaint(hWnd, &ps);
+        }
+        break;
+
+    case WM_KEYDOWN:
+
+        switch (wParam)
+        {
+        case VK_RIGHT:
+            rc.left += 10;
+            rc.right += 10;
+            break;
+
+        case VK_LEFT:
+            rc.left  -= 10;
+            rc.right -= 10;
+            break;
+
+        case VK_UP:
+            rc.top    -= 10;
+            rc.bottom -= 10;
+            break;
+
+        case VK_DOWN:
+            rc.top    += 10;
+            rc.bottom += 10;
+            break;
+
+        case VK_SPACE:
+            break;
+
+        case VK_ESCAPE:
+            DestroyWindow(hWnd);
+            break;
+        }
+
+        break;
+
+    case WM_DESTROY:
+        PostQuitMessage(0);
+        break;
+    default:
+        return DefWindowProc(hWnd, message, wParam, lParam);
+    }
+    return 0;
+}
+```
+
+
