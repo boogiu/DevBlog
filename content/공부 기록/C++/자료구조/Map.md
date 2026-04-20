@@ -66,7 +66,7 @@ for(const auto& m : list) //이때 auto는 pair가 됨.
 ```cpp
 auto range = m.equal_range();
 for(auto iter = range.first; iter != range.second; ++iter){
-	cout<< iter->first;
+	cout << iter->first;
 	cout << iter->second; 
 }
 ```
