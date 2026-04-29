@@ -1,7 +1,7 @@
 {
 	"nodes":[
+		{"id":"88db84429563ce05","type":"group","x":-395,"y":420,"width":1025,"height":940,"label":"커널 오브젝트의 생성 과정"},
 		{"id":"9aa1b71f60817aae","type":"group","x":-395,"y":-320,"width":1615,"height":540,"label":"프로세스의 상태 변화"},
-		{"id":"88db84429563ce05","type":"group","x":-395,"y":420,"width":1025,"height":620,"label":"커널 오브젝트의 생성 과정"},
 		{"id":"ee0dbf8509e82f29","type":"text","text":"S : START(프로그램의 시작)","x":-375,"y":0,"width":250,"height":60},
 		{"id":"bd61f5f5f4e59012","type":"text","text":"Ready (프로그램의 작동 대기)","x":-40,"y":0,"width":280,"height":60},
 		{"id":"dd36e3a0e9987932","type":"text","text":"Blocked(프로그램의 중지 : 입출력 )","x":560,"y":0,"width":320,"height":60},
@@ -14,12 +14,12 @@
 		{"id":"d77d154a7eeee3e9","type":"text","text":"Windows OS","x":-375,"y":680,"width":250,"height":100},
 		{"id":"4bbd1ec41319a4ad","type":"text","text":"프로세스 생성","x":-375,"y":820,"width":250,"height":60,"color":"3"},
 		{"id":"a076323e0ba955cb","type":"text","text":"Process","x":-375,"y":920,"width":250,"height":100},
-		{"id":"c809f811e2a984db","type":"text","text":"생성 및 관리","x":7,"y":748,"width":250,"height":60,"color":"3"},
-		{"id":"3b1afe96d9952d09","type":"text","text":"프로세스 정보로 채워짐","x":7,"y":890,"width":250,"height":60,"color":"3"},
 		{"id":"9e715e1555552b28","type":"text","text":"커널 오브젝트","x":360,"y":772,"width":250,"height":148},
 		{"id":"0d5a7c19974520c4","type":"text","text":"프로세스 관리 구조체\nstruct PCObject{\n\t...\n\t...\n}","x":360,"y":440,"width":250,"height":148},
 		{"id":"9b695ad0dd27f249","type":"text","text":"프로세스 관리 구조체 변수","x":360,"y":648,"width":250,"height":60,"color":"3"},
-		{"id":"0ee96a939141f00c","type":"file","file":"공부 기록/CS/윈도우 운영체제/커널 오브젝트.md","x":-68,"y":450,"width":400,"height":198}
+		{"id":"c809f811e2a984db","type":"text","text":"생성 및 관리","x":0,"y":480,"width":250,"height":60,"color":"3"},
+		{"id":"3b1afe96d9952d09","type":"text","text":"프로세스 정보로 채워짐","x":0,"y":860,"width":250,"height":60,"color":"3"},
+		{"id":"0ee96a939141f00c","type":"file","file":"공부 기록/CS/윈도우 운영체제/커널 오브젝트.md","x":-375,"y":1080,"width":400,"height":830}
 	],
 	"edges":[
 		{"id":"de1909a55c1926ee","fromNode":"ee0dbf8509e82f29","fromSide":"right","toNode":"bd61f5f5f4e59012","toSide":"left"},
