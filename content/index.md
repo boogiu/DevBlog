@@ -34,7 +34,7 @@ description: 프로젝트 기록, 공부 정리, 트러블슈팅 아카이브
   </div>
 </a>
 
-<a class="home-card" href="/프로젝트/TroubleShooting/">
+<a class="home-card" href="/TroubleShooting/">
          <div class="home-card-body">  
  <span class="home-card-title">Troubleshooting</span>
     <span class="home-card-desc">오류 원인 분석, 해결 과정, 디버깅 기록</span>
