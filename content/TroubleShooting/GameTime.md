@@ -375,10 +375,10 @@ if (musicTime >= beatTime)
 단, `musicTime`을 매 프레임 확인하는 방식은 결국 폴링이므로 `==` 비교는 위험하다. 프레임은 연속적이지 않기 때문에 정확히 같은 시점을 밟지 않을 수 있다.
 
 ```cpp
-// ❌ 위험
+// 위험
 if (musicTime == beatTime) { ... }
 
-// ✅ 올바른 방법 — 이전/현재 프레임 사이 구간 포함 여부 검사
+//이전/현재 프레임 사이 구간 포함 여부 검사
 bool passed = prevMusicTime < eventTime && eventTime <= currentMusicTime;
 ```
 
@@ -540,10 +540,10 @@ void RhythmComponent::Update(const ITimeContext& timeContext)
 #### 핵심 차이
 
 ```cpp
-// ❌ 엔진 시간 기반 누적
+// X 엔진 시간 기반 누적
 audioTime += engineDeltaTime;
 
-// ✅ FMOD 실제 재생 위치 기반
+// O FMOD 실제 재생 위치 기반
 audioTime = fmodTimelinePosition;
 ```
 
@@ -566,7 +566,7 @@ void Engine::Tick()
 }
 ```
 
-#### ⚠️ `==` 비교를 하면 안 된다
+####  `==` 비교를 하면 안 된다
 
 ```cpp
 // ❌ 위험 — 프레임이 해당 시간을 정확히 밟지 않고 지나칠 수 있다
