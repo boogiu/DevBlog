@@ -93,7 +93,7 @@ Unreal은 Unity와 달리 시간 값 자체보다 **업데이트 시점**이 더
 
 ### TimeContext
 
-> [!info] 핵심 개념 **TimeContext는 시간 정책에 대한 정보 묶음이다.** DirectX 기반 엔진을 구성하고 있기 때문에 이름은 Context로 맞춘다.
+> [!check] 핵심 개념 **TimeContext는 시간 정책에 대한 정보 묶음이다.** DirectX 기반 엔진을 구성하고 있기 때문에 이름은 Context로 맞춘다.
 
 기존 업데이트 방식:
 
