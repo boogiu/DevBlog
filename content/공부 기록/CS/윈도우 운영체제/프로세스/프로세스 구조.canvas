@@ -14,12 +14,12 @@
 		{"id":"d77d154a7eeee3e9","type":"text","text":"Windows OS","x":-375,"y":680,"width":250,"height":100},
 		{"id":"4bbd1ec41319a4ad","type":"text","text":"프로세스 생성","x":-375,"y":820,"width":250,"height":60,"color":"3"},
 		{"id":"a076323e0ba955cb","type":"text","text":"Process","x":-375,"y":920,"width":250,"height":100},
-		{"id":"9e715e1555552b28","type":"text","text":"커널 오브젝트","x":360,"y":772,"width":250,"height":148},
 		{"id":"0d5a7c19974520c4","type":"text","text":"프로세스 관리 구조체\nstruct PCObject{\n\t...\n\t...\n}","x":360,"y":440,"width":250,"height":148},
 		{"id":"9b695ad0dd27f249","type":"text","text":"프로세스 관리 구조체 변수","x":360,"y":648,"width":250,"height":60,"color":"3"},
 		{"id":"c809f811e2a984db","type":"text","text":"생성 및 관리","x":0,"y":480,"width":250,"height":60,"color":"3"},
 		{"id":"3b1afe96d9952d09","type":"text","text":"프로세스 정보로 채워짐","x":0,"y":860,"width":250,"height":60,"color":"3"},
-		{"id":"0ee96a939141f00c","type":"file","file":"공부 기록/CS/윈도우 운영체제/커널 오브젝트.md","x":-375,"y":1080,"width":400,"height":830}
+		{"id":"0ee96a939141f00c","type":"file","file":"공부 기록/CS/윈도우 운영체제/커널 오브젝트.md","x":680,"y":431,"width":400,"height":830},
+		{"id":"9e715e1555552b28","type":"text","text":"커널 오브젝트","x":360,"y":880,"width":250,"height":148}
 	],
 	"edges":[
 		{"id":"de1909a55c1926ee","fromNode":"ee0dbf8509e82f29","fromSide":"right","toNode":"bd61f5f5f4e59012","toSide":"left"},
