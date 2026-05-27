@@ -1,3 +1,4 @@
+#프로세스
 ### 1. IPC란?
 
 IPC는 Inter-Process Communication의 약자로,  
