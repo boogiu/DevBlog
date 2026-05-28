@@ -147,40 +147,115 @@ HANDLE hMutex = CreateMutex(NULL, FALSE, L"MyAppMutex");
 HANDLE hMutex = OpenMutex(MUTEX_ALL_ACCESS, FALSE, L"MyAppMutex");
 ```
 
-#### 이벤트 기반 동기화 (실행 순서 동기화)
+---
 
-실행 순서 동기화에 사용된다. 한 스레드가 특정 작업을 완료했음을 다른 스레드에게 신호로 알려주는 방식이다. `SetEvent()`로 Signaled 상태로 만들고, `WaitForSingleObject()`로 신호를 대기한다.
+#### 이벤트 기반 동기화 (Event-Based Synchronization)
 
-이벤트 오브젝트는 두 가지 종류가 있다.
+> **핵심 개념:** 실행 _순서_를 동기화한다. 한 스레드가 특정 작업을 완료했음을 다른 스레드에게 신호로 알리는 메커니즘.
 
-- **자동 리셋 이벤트(Auto-Reset)**: `SetEvent()` 후 하나의 스레드가 대기에서 풀리면 자동으로 Non-Signaled 상태로 복귀한다.
-- **수동 리셋 이벤트(Manual-Reset)**: `SetEvent()` 후 대기 중인 모든 스레드가 풀리며, 명시적으로 `ResetEvent()`를 호출해야 Non-Signaled로 돌아간다.
+- `SetEvent()` → 이벤트를 **Signaled** 상태로 전환
+- `WaitForSingleObject()` → Signaled 상태가 될 때까지 대기 (블로킹)
+- `CloseHandle()` → 커널 오브젝트 해제 (반드시 호출)
+
+| 종류                       | `CreateEvent` 2번째 인자 | 동작 방식                                                                    |
+| ------------------------ | -------------------- | ------------------------------------------------------------------------ |
+| **자동 리셋 (Auto-Reset)**   | `FALSE`              | `SetEvent()` 후, 대기 중인 스레드 **하나만** 깨우고 자동으로 Non-Signaled로 복귀              |
+| **수동 리셋 (Manual-Reset)** | `TRUE`               | `SetEvent()` 후, 대기 중인 **모든** 스레드가 깨어남. `ResetEvent()` 호출 전까지 Signaled 유지 |
+
+> [!tip] 선택 기준
+> 
+> - 소비자가 1개라면 → **Auto-Reset**
+> - 소비자가 여러 개이고 모두 동시에 깨워야 한다면 → **Manual-Reset**
+
+##### 기본 코드 패턴
 
 ```cpp
-HANDLE hEvent = CreateEvent(NULL, FALSE, FALSE, NULL); // Auto-Reset
+// 이벤트 생성: Auto-Reset, 초기 상태 Non-Signaled
+HANDLE hEvent = CreateEvent(
+    NULL,   // 보안 속성
+    FALSE,  // FALSE = Auto-Reset, TRUE = Manual-Reset
+    FALSE,  // 초기 상태: Non-Signaled
+    NULL    // 이름 없음
+);
 
 // 스레드 A: 작업 완료 후 신호 발생
 SetEvent(hEvent);
 
-// 스레드 B: 신호 대기
+// 스레드 B: 신호 대기 (무한정)
 WaitForSingleObject(hEvent, INFINITE);
-// 이후 작업 수행
+// → Signaled가 되면 이 줄부터 실행 재개
 
 CloseHandle(hEvent);
 ```
 
 ---
 
-## 동기화 메커니즘 비교 요약
+##### 생산자-소비자 모델 (Producer-Consumer Pattern)
 
-|구분|기법|동기화 목적|범위|성능|
-|---|---|---|---|---|
-|유저 모드|크리티컬 섹션|메모리 접근|프로세스 내|빠름|
-|유저 모드|인터락 함수|메모리 접근|단일 변수|매우 빠름|
-|커널 모드|뮤텍스|메모리 접근|프로세스 간 가능|보통|
-|커널 모드|세마포어|메모리 접근|프로세스 간 가능|보통|
-|커널 모드|이름있는 뮤텍스|메모리 접근|프로세스 간|보통|
-|커널 모드|이벤트|실행 순서|프로세스 간 가능|보통|
+> **이벤트 기반 동기화가 가장 자주 활용되는 설계 패턴**
+
+- 버퍼를 사이에 두어 **생산 속도 ≠ 소비 속도**인 상황에서도 독립적 실행 보장
+- 이벤트로 "데이터 준비됨"을 소비자에게 알림
+
+
+**주의: 동시 접근 문제**
+생산자 1 : 소비자 N 구조에서 이벤트가 Signaled로 바뀌는 순간 **여러 소비자가 동시에 버퍼에 접근**할 수 있다.
+
+```
+이벤트 Signaled
+    │
+    ├── 소비자 스레드 1 ──► 버퍼 접근 ⚠️
+    ├── 소비자 스레드 2 ──► 버퍼 접근 ⚠️  ← Race Condition 발생 가능
+    └── 소비자 스레드 3 ──► 버퍼 접근 ⚠️
+```
+
+**해결책:** 뮤텍스(Mutex)와 혼용
+
+```cpp
+// 소비자 스레드 내부
+WaitForSingleObject(hEvent, INFINITE);    // 신호 대기
+WaitForSingleObject(hMutex, INFINITE);    // 버퍼 잠금
+// → 임계 구역: 버퍼 읽기/쓰기
+ReleaseMutex(hMutex);                     // 잠금 해제
+```
+
+> [!warning] 이벤트 vs 뮤텍스 역할 구분
+> 
+> - **이벤트** → 실행 _순서_ 제어 ("이제 시작해도 돼")
+> - **뮤텍스** → 공유 자원 _접근_ 제어 ("내가 쓰는 동안 너는 기다려")
+
+---
+
+####  타이머 기반 동기화 (Timer-Based Synchronization)
+
+> **핵심 개념:** 정해진 시간이 경과하면 **자동으로 Signaled** 상태가 되는 커널 오브젝트. `WaitForSingleObject()`와 함께 사용.
+
+##### 타이머 종류
+
+| 종류                           | 동작 방식                        | 사용 사례        |
+| ---------------------------- | ---------------------------- | ------------ |
+| **수동 리셋 타이머** (일반 타이머)       | 지정 시간 후 1회 Signaled          | 딜레이 후 1회 실행  |
+| **주기적 타이머** (Periodic Timer) | 최초 지연 후, 일정 간격으로 반복 Signaled | 주기적 폴링, 하트비트 |
+
+##### 타이머 생성 패턴 (참고)
+
+```cpp
+// Waitable Timer 생성
+HANDLE hTimer = CreateWaitableTimer(NULL, TRUE, NULL);
+
+LARGE_INTEGER liDueTime;
+liDueTime.QuadPart = -10000000LL; // 1초 후 (100ns 단위, 음수 = 상대 시간)
+
+// 수동 리셋 타이머: lPeriod = 0
+// 주기적 타이머: lPeriod = 주기(ms)
+SetWaitableTimer(hTimer, &liDueTime, 1000, NULL, NULL, FALSE);
+//                                   ^^^^ 1000ms 주기 → 주기적 타이머
+
+WaitForSingleObject(hTimer, INFINITE); // 타이머 만료 대기
+
+CancelWaitableTimer(hTimer);
+CloseHandle(hTimer);
+```
 
 ---
 
@@ -282,3 +357,13 @@ CAS 기반 Lock-Free 알고리즘에서 발생하는 문제다. 스레드 A가 �
 
 CAS 명령 자체는 원자적으로 아무 문제 없이 실행된다. 문제는 **"읽은 시점"과 "CAS 실행 시점" 사이의 간격**이다.
 노드 기반 자료구조에서 가장 치명적이다.
+
+---
+Q1. Auto-Reset 
+이벤트를 사용하는 상황에서 소비자 스레드가 3개라면, `SetEvent()`를 한 번 호출했을 때 몇 개의 스레드가 대기에서 풀리는가? (오토와 매뉴얼의 차이로 비교)
+
+Q2. 이벤트만으로 생산자-소비자 문제를 구현했을 때 발생할 수 있는 Race Condition 시나리오를 구체적으로 서술하고, 뮤텍스를 함께 사용했을 때 어떻게 해결되는지 설명하라.
+
+Q4. 이벤트 객체란 무엇이며 뮤텍스와 어떻게 다른가요.
+
+Q5. 이벤트 기반 대기와 스핀락의 차이는 무엇인가요?
